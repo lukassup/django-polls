@@ -7,6 +7,9 @@ question, visitors can choose between a fixed number of answers.
 
 Detailed documentation is in the "docs" directory.
 
+.. image:: https://raw.githubusercontent.com/lukassup/django-polls/master/screenshot.png
+    :target:https://raw.githubusercontent.com/lukassup/django-polls/master/screenshot.png
+
 Quick start
 -----------
 
