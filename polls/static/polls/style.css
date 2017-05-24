@@ -1,0 +1,12 @@
+body {
+  margin-top: 6em;
+  margin-bottom: 6em;
+}
+
+.poll-meter {
+  background-color: hsla(0, 0%, 60%, 0.333);
+  height: 1em;
+  width: 0%;
+  transition: width 750ms ease-out;
+  transition-delay: 250ms;
+}

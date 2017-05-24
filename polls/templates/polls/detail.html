@@ -1,0 +1,41 @@
+{% extends "polls/base.html" %}
+
+{% block title %}details: {{ question.question_text }}{% endblock %}
+
+{% block content %}
+<div class="container">
+
+  <div class="row">
+    <div class="twelve columns">
+      <h1>Poll: {{ question.question_text }}</h1>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="twelve columns">
+    {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+    </div>
+  </div>
+
+  <form action="{% url 'polls:vote' question.id %}" method="post">
+  {% csrf_token %}
+  {% for choice in question.choices.all %}
+    <div class="row">
+      <div class="twelve columns">
+        <label>
+        <input type="radio" name="choice" id="choice-{{ forloop.counter }}" value="{{ choice.id }}" />
+        <span class="label-body">{{ choice.choice_text }}</span>
+        </label>
+      </div>
+    </div>
+  {% endfor %}
+    <div class="row">
+      <div class="twelve columns">
+        <a class="button" href="{% url 'polls:index' %}">Back</a>
+        <input class="button-primary" type="submit" value="Vote" />
+      </div>
+    </div>
+  </form>
+
+</div>
+{% endblock content %}

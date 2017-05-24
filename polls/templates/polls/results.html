@@ -1,0 +1,38 @@
+{% extends "polls/base.html" %}
+{% load static %}
+
+{% block title %}results: {{ question.question_text }}{% endblock %}
+
+{% block content %}
+<div class="container">
+
+  <div class="row">
+    <div class="twelve columns">
+      <h1>Poll results: {{ question.question_text }}</h1>
+    </div>
+  </div>
+
+  <div class="row">
+    <ul class="twelve columns">
+    {% for choice in question.choices.all %}
+      <li>
+        {{ choice.choice_text }} &mdash; <strong>{{ choice.votes }} vote{{ choice.votes|pluralize }}</strong>
+        <div class="poll-meter" data-votes="{{ choice.votes }}"></div>
+      </li>
+    {% endfor %}
+    </ul>
+  </div>
+
+<div class="row">
+  <div class="twelve columns">
+    <a class="button" href="{% url 'polls:index' %}">Home</a>
+    <a class="button" href="{% url 'polls:detail' question.id %}">Vote again?</a>
+  </div>
+</div>
+
+</div>
+{% endblock content %}
+
+{% block body_scripts %}
+<script src="{% static 'polls/script.js' %}" charset="utf-8"></script>
+{% endblock body_scripts %}

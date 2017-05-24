@@ -1,0 +1,14 @@
+[run]
+branch = True
+cover_pylib = False
+source = .
+omit =
+    ./manage.py
+    ./venv/*
+    */migrations/*.py
+    */settings.py
+    */tests.py
+    */wsgi.py
+
+[report]
+show_missing = True
